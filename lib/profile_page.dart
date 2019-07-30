@@ -101,7 +101,7 @@ class PKDot extends StatelessWidget {
     return Row(
       children: <Widget>[
         Text(
-          "PK MTECHVIRAL",
+          "Owl Eyes",
           textScaleFactor: 2,
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -159,11 +159,11 @@ class ProfileInfo extends StatelessWidget {
             : MediaQuery.of(context).size.width * 0.25,
         decoration: BoxDecoration(
           backgroundBlendMode: BlendMode.luminosity,
-          color: Colors.deepOrange,
+          color: Colors.orange,
 //            borderRadius: BorderRadius.circular(40),
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: AssetImage("pk.jpg"),
+            image: AssetImage("owleyes.jpg"),
             alignment: Alignment.center,
             fit: BoxFit.cover,
           ),
@@ -174,12 +174,12 @@ class ProfileInfo extends StatelessWidget {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Text(
-        "Hi there! My name is",
+        "Hi there! We are",
         textScaleFactor: 2,
         style: TextStyle(color: Colors.orange),
       ),
       Text(
-        "Pawan\nKumar",
+        "Owl\nEyes",
         textScaleFactor: 5,
         style: TextStyle(
           color: Colors.white,
@@ -190,9 +190,9 @@ class ProfileInfo extends StatelessWidget {
         height: 10,
       ),
       Text(
-        "A Google Developer Expert for Flutter, Dart & Web Tech.\n"
-        "I am also a youtuber having MTechViral youtube channel\n"
-        "where I make tutorials for technology.",
+        "We are technologists with unique capabilities in Android, Flutter, and Firebase.\n"
+        "We have delivered solutions for the least and the greatest\n"
+        "and would be delighted to work with you.",
         softWrap: true,
         textScaleFactor: 1.5,
         style: TextStyle(color: Colors.white70),
@@ -205,7 +205,7 @@ class ProfileInfo extends StatelessWidget {
         children: <Widget>[
           RaisedButton(
             shape: StadiumBorder(),
-            child: Text("Resume"),
+            child: Text("Latest work"),
             color: Colors.red,
             onPressed: () {},
             padding: EdgeInsets.all(10),
@@ -279,7 +279,7 @@ class SocialInfo extends StatelessWidget {
             ],
           ),
           Text(
-            "Pawan Kumar ©️2019",
+            "Owl Eyes ©️2019",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey,
@@ -306,7 +306,7 @@ class SocialInfo extends StatelessWidget {
             color: Colors.blue,
           ),
           Text(
-            "Pawan Kumar ©️2019",
+            "Owl Eyes ©️2019",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey,
