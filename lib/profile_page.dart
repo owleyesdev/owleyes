@@ -1,5 +1,6 @@
 import 'package:flutter_web/material.dart';
 import 'package:myportfolio/responsive_widget.dart';
+import 'dart:html';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key key}) : super(key: key);
@@ -179,7 +180,7 @@ class ProfileInfo extends StatelessWidget {
         style: TextStyle(color: Colors.orange),
       ),
       Text(
-        "Owl\nEyes",
+        "Owl Eyes",
         textScaleFactor: 5,
         style: TextStyle(
           color: Colors.white,
@@ -263,17 +264,16 @@ class SocialInfo extends StatelessWidget {
             children: <Widget>[
               NavButton(
                 text: "Github",
-                onPressed: () {},
+                onPressed: () {
+                  window.location.assign("https://github.com/owleyesdev");
+                },
                 color: Colors.blue,
               ),
               NavButton(
                 text: "Twitter",
-                onPressed: () {},
-                color: Colors.blue,
-              ),
-              NavButton(
-                text: "Facebook",
-                onPressed: () {},
+                onPressed: () {
+                  window.location.assign("https://twitter.com/owleyesdev");
+                },
                 color: Colors.blue,
               ),
             ],
@@ -292,17 +292,16 @@ class SocialInfo extends StatelessWidget {
         children: <Widget>[
           NavButton(
             text: "Github",
-            onPressed: () {},
+            onPressed: () {
+              window.location.assign("https://github.com/owleyesdev");
+            },
             color: Colors.blue,
           ),
           NavButton(
             text: "Twitter",
-            onPressed: () {},
-            color: Colors.blue,
-          ),
-          NavButton(
-            text: "Facebook",
-            onPressed: () {},
+            onPressed: () {
+              window.location.assign("https://twitter.com/owleyesdev");
+            },
             color: Colors.blue,
           ),
           Text(
