@@ -2,57 +2,56 @@ import 'package:flutter_web/material.dart';
 import 'package:myportfolio/responsive_widget.dart';
 import 'dart:html';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       largeScreen: Scaffold(
         backgroundColor: Colors.black,
-        appBar: AppBar(
-          elevation: 0.0,
-          backgroundColor: Colors.black,
-        ),
         drawer: ResponsiveWidget.isSmallScreen(context)
             ? Drawer(
                 child: ListView(
                   padding: const EdgeInsets.all(20),
                   children: <Widget>[
                     NavButton(
-                      text: "about",
+                      text: "About",
                       onPressed: () {},
                     ),
                     NavButton(
-                      text: "work",
+                      text: "Work",
                       onPressed: () {},
                     ),
                     NavButton(
-                      text: "contact",
+                      text: "Contact",
                       onPressed: () {},
                     ),
                   ],
                 ),
               )
             : null,
-        body: SingleChildScrollView(
-          child: AnimatedPadding(
-            duration: Duration(seconds: 1),
-            padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.1),
-            child: ResponsiveWidget(
-              largeScreen: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  NavHeader(),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
-                  ),
-                  ProfileInfo(),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                  ),
-                  SocialInfo(),
-                ],
+        body: ScrollConfiguration(
+          behavior: NoScrollHighlightBehavior(),
+          child: SingleChildScrollView(
+            child: AnimatedPadding(
+              duration: Duration(seconds: 1),
+              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.05, horizontal: MediaQuery.of(context).size.height * 0.1),
+              child: ResponsiveWidget(
+                largeScreen: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    NavHeader(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    ),
+                    HomeInfo(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.2,
+                    ),
+                    SocialInfo(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -77,15 +76,15 @@ class NavHeader extends StatelessWidget {
             Row(
               children: <Widget>[
                 NavButton(
-                  text: "about",
+                  text: "About",
                   onPressed: () {},
                 ),
                 NavButton(
-                  text: "work",
+                  text: "Work",
                   onPressed: () {},
                 ),
                 NavButton(
-                  text: "contact",
+                  text: "Contact",
                   onPressed: () {},
                 ),
               ],
@@ -139,19 +138,15 @@ class NavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlineButton(
+    return MaterialButton(
       child: Text(text),
-      borderSide: BorderSide(
-        color: color,
-      ),
       onPressed: onPressed,
-      highlightedBorderColor: color,
     );
   }
 }
 
-class ProfileInfo extends StatelessWidget {
-  profileImage(context) => Container(
+class HomeInfo extends StatelessWidget {
+  homeImage(context) => Container(
         height: ResponsiveWidget.isSmallScreen(context)
             ? MediaQuery.of(context).size.height * 0.25
             : MediaQuery.of(context).size.width * 0.25,
@@ -171,7 +166,7 @@ class ProfileInfo extends StatelessWidget {
         ),
       );
 
-  final profileData = Column(
+  final homeData = Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Text(
@@ -200,31 +195,6 @@ class ProfileInfo extends StatelessWidget {
       ),
       SizedBox(
         height: 20,
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          RaisedButton(
-            shape: StadiumBorder(),
-            child: Text("Latest work"),
-            color: Colors.red,
-            onPressed: () {},
-            padding: EdgeInsets.all(10),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          OutlineButton(
-            borderSide: BorderSide(
-              color: Colors.red,
-            ),
-            shape: StadiumBorder(),
-            child: Text("Say Hi!"),
-            color: Colors.red,
-            onPressed: () {},
-            padding: EdgeInsets.all(10),
-          )
-        ],
       )
     ],
   );
@@ -235,17 +205,17 @@ class ProfileInfo extends StatelessWidget {
       largeScreen: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[profileImage(context), profileData],
+        children: <Widget>[homeImage(context), homeData],
       ),
       smallScreen: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          profileImage(context),
+          homeImage(context),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.1,
           ),
-          profileData
+          homeData
         ],
       ),
     );
@@ -314,5 +284,13 @@ class SocialInfo extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class NoScrollHighlightBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }
