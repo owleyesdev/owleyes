@@ -123,7 +123,7 @@ class WhoAreWeSection extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 24.0),
                     child: Text(
-                      "Who Are We",
+                      "Who We Are",
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 24.0),
                     ),
@@ -209,7 +209,7 @@ class WhoAreWeSection extends StatelessWidget {
                   child: Container(
                     width: 232.0,
                     child: Text(
-                      "Based out of Austin, TX Darran has been a developer for 47 years.\n\nHe has worked on software for HEB, Homeaway, FiveStars, and more.",
+                      "Based out of Austin, TX Darran has nearly two decades in designing and deliverying software systems.\n\nHe has worked on software for HEB, Homeaway, FiveStars, and more.",
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 16.0),
                     ),
