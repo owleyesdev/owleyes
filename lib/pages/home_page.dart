@@ -1,6 +1,9 @@
 import 'package:flutter_web/material.dart';
-import 'package:myportfolio/responsive_widget.dart';
+import 'package:myportfolio/view_util/responsive_widget.dart';
+import 'package:myportfolio/view_util/empty_overscroll_behavior.dart';
 import 'dart:html';
+
+import 'package:myportfolio/pages/about_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -17,7 +20,12 @@ class HomePage extends StatelessWidget {
                   children: <Widget>[
                     NavButton(
                       text: "About",
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AboutPage()),
+                        );
+                      },
                     ),
                     NavButton(
                       text: "Work",
@@ -32,7 +40,7 @@ class HomePage extends StatelessWidget {
               )
             : null,
         body: ScrollConfiguration(
-          behavior: NoScrollHighlightBehavior(),
+          behavior: EmptyOverScrollBehavior(),
           child: SingleChildScrollView(
             child: AnimatedPadding(
               duration: Duration(seconds: 1),
@@ -71,13 +79,17 @@ class NavHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           PKDot(),
-//          Spacer(),
           if (!ResponsiveWidget.isSmallScreen(context))
             Row(
               children: <Widget>[
                 NavButton(
                   text: "About",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AboutPage()),
+                    );
+                  },
                 ),
                 NavButton(
                   text: "Work",
@@ -100,12 +112,20 @@ class PKDot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Text(
-          "Owl Eyes",
-          textScaleFactor: 2,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
+        GestureDetector(
+          child: Text(
+            "Owl Eyes",
+            textScaleFactor: 2,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
+          },
         ),
         SizedBox(
           width: 5,
@@ -284,13 +304,5 @@ class SocialInfo extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class NoScrollHighlightBehavior extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
-    return child;
   }
 }
